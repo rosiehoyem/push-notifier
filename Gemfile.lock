@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.0.1)
       activesupport (= 4.0.1)
       builder (~> 3.1.0)
@@ -51,6 +53,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    connection_pool (1.2.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
@@ -64,6 +67,12 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
+    friendly_id (5.0.2)
+      activerecord (~> 4.0.0)
+    gcm (0.0.6)
+      httparty
+      json
+    grocer (0.5.0)
     guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -74,7 +83,11 @@ GEM
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
+    ice_cube (0.11.1)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -95,6 +108,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
+    multi_xml (0.5.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
@@ -124,6 +138,9 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    redis (3.0.7)
+    redis-namespace (1.4.1)
+      redis (~> 3.0.4)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -154,6 +171,16 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    sidekiq (2.17.3)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
+    sidetiq (0.5.0)
+      celluloid (>= 0.14.1)
+      ice_cube (~> 0.11.0)
+      sidekiq (>= 2.16.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -193,12 +220,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   better_errors
   binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
+  friendly_id (~> 5.0.0)
+  gcm
+  grocer
   guard (>= 2.1.0)
   guard-rspec
   jbuilder (~> 1.2)
@@ -208,6 +239,8 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver
+  sidekiq
+  sidetiq
   simplecov
   sqlite3
   terminal-notifier-guard

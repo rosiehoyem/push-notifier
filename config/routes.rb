@@ -1,4 +1,15 @@
+require 'api_constraints'
+
 PushNotifier::Application.routes.draw do
+  namespace :api, defautls: { format: :json } do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
+      resources :users do
+        resources :devices
+      end
+      resources :permitted_apps
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
